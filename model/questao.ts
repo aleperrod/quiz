@@ -31,6 +31,10 @@ export default class QuestaoModel {
         return this.#acertou
     }
 
+    get naoRespondida(){
+        return !this.respondida
+    }
+
     get respondida(){
         for(let resposta of this.#respostas){
             if(resposta.revelada) return true
@@ -51,6 +55,11 @@ export default class QuestaoModel {
     embaralharRespostas(): QuestaoModel {
         let respostasEmbaralhadas = embaralhar(this.#respostas)
         return new QuestaoModel(this.#id,this.#enunciado,respostasEmbaralhadas,this.#acertou)
+    }
+
+    static criarUsandoObjeto(obj: QuestaoModel): QuestaoModel {
+        const respostas = obj.respostas.map(resp => RespostaModel.criarUsandoObjeto(resp))
+        return new QuestaoModel(obj.id,obj.enunciado,respostas,obj.acertou)
     }
 
     paraObjeto(){
