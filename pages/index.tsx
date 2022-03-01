@@ -20,13 +20,13 @@ export default function Home() {
   const [respostasCertas,setRespostasCertas] = useState<number>(0)
 
   async function carregarIdsDasQquestoes() {
-    const resp = await fetch(`${BASE_URL}/questionario`)
+    const resp = await fetch(`${BASE_URL}/questionario`,{mode:'no-cors'})
     const idsDasQuestoes = await resp.json()
     setIdsDasQuestoes(idsDasQuestoes)
   }
 
   async function carregarQquestao(idQuestao: number) {
-    const resp = await fetch(`${BASE_URL}/questoes/${idQuestao}`)
+    const resp = await fetch(`${BASE_URL}/questoes/${idQuestao}`,{mode:'no-cors'})
     const json = await resp.json()
     const novaQuestao = QuestaoModel.criarUsandoObjeto(json)
     setQuestao(novaQuestao)
