@@ -14,7 +14,7 @@ const questaoMock = new QuestaoModel(1,'Melhor cor?',[
 
 export default function Home() {
   const router = useRouter()
-  const BASE_URL = 'http://localhost:3000/api'
+  const BASE_URL = 'https://quiz-lake-six.vercel.app/api'
   const [idsDasQuestoes, setIdsDasQuestoes] = useState<number[]>([])
   const [questao,setQuestao] = useState<QuestaoModel>()
   const [respostasCertas,setRespostasCertas] = useState<number>(0)
